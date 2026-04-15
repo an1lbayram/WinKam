@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+ui/node_modules/
+ui/dist/
+ui/vendor/
+ui/release/
+ui/build/icon.png
+
+# Virtual envs
+.venv/
+venv/
+
+# WinKam runtime logs
+logs/
+
+# OS/editor
+.DS_Store
+Thumbs.db

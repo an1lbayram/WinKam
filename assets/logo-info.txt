@@ -1,0 +1,8 @@
+# WinKam Logo Information
+
+This folder is reserved for the final WinKam app logo and screenshots.
+Suggested logo structure is a tech-focused modern cleaner badge.
+
+File guidelines:
+- WinKam-logo.png (512x512 transparent)
+- WinKam-menu.png (Application screenshot)

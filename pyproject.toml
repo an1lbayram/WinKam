@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=70", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "winkam"
+version = "0.0.0"
+description = "Windows Sistem Temizlik ve Optimizasyon Araci (Python CLI)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [{name = "WinKam contributors"}]
+dependencies = []
+
+[project.scripts]
+winkam = "winkam.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "py-src"}
+
+[tool.setuptools.packages.find]
+where = ["py-src"]
