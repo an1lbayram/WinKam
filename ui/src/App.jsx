@@ -46,12 +46,12 @@ function Shell({ children }) {
   return (
     <div className="min-h-full bg-[#0b0d12] text-white">
       <div className="pointer-events-none fixed inset-0 opacity-70">
-        <div className="absolute -top-24 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-violet-700/20 blur-[110px]" />
-        <div className="absolute bottom-[-160px] right-[-120px] h-[420px] w-[620px] rounded-full bg-cyan-500/10 blur-[110px]" />
+        <div className="absolute -top-24 left-1/2 h-[300px] w-[500px] md:h-[420px] md:w-[820px] -translate-x-1/2 rounded-full bg-violet-700/20 blur-[90px] md:blur-[110px]" />
+        <div className="absolute bottom-[-160px] -right-10 md:right-[-120px] h-[300px] w-[400px] md:h-[420px] md:w-[620px] rounded-full bg-cyan-500/10 blur-[90px] md:blur-[110px]" />
       </div>
 
-      <div className="relative mx-auto flex min-h-full max-w-[1240px] gap-6 px-6 py-6">
-        <aside className="w-[280px] shrink-0">
+      <div className="relative mx-auto flex min-h-full max-w-[1240px] flex-col md:flex-row gap-4 md:gap-6 px-4 py-4 md:px-6 md:py-6">
+        <aside className="w-full md:w-[280px] shrink-0">
           <div className="rounded-2xl border border-white/10 bg-white/3 p-4">
             <div className="flex items-center gap-3">
               <div className="grid h-10 w-10 place-items-center rounded-xl bg-violet-600/20 ring-1 ring-violet-500/30">
@@ -63,7 +63,7 @@ function Shell({ children }) {
               </div>
             </div>
 
-            <nav className="mt-5 space-y-1">
+            <nav className="mt-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-1 gap-2">
               {nav.map((n) => {
                 const Icon = n.icon
                 return (
@@ -115,12 +115,12 @@ function Shell({ children }) {
 
 function PageHeader({ title, subtitle, actions }) {
   return (
-    <div className="flex items-start justify-between gap-4">
+    <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
       <div className="min-w-0">
         <div className="text-xl font-semibold leading-tight">{title}</div>
         {subtitle ? <div className="mt-1 text-sm text-white/60">{subtitle}</div> : null}
       </div>
-      <div className="flex shrink-0 items-center gap-2">{actions}</div>
+      <div className="flex shrink-0 flex-wrap items-center gap-2">{actions}</div>
     </div>
   )
 }
@@ -144,7 +144,7 @@ function OutputPanel({ output }) {
 
   return (
     <Card className="overflow-hidden">
-      <CardHeader className="flex flex-row items-start justify-between">
+      <CardHeader className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
         <div className="space-y-1">
           <CardTitle>Çıktı / Log</CardTitle>
           <CardDescription>Komut çıktıları burada görünür (dev modunda mock).</CardDescription>
@@ -223,7 +223,7 @@ function Overview() {
         title="Genel Bakış"
         subtitle="Sistemi güvenle temizle, onar, ağını sıfırla ve yedek al."
       />
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Card>
           <CardHeader>
             <CardTitle>Önerilen akış</CardTitle>
@@ -294,14 +294,14 @@ function Clean() {
         </div>
       ) : null}
 
-      <div className="grid grid-cols-3 gap-4">
-        <Card className="col-span-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <Card className="col-span-1 md:col-span-2">
           <CardHeader>
             <CardTitle>Temizlik seçenekleri</CardTitle>
             <CardDescription>Her mod farklı hedefleri temizler.</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 gap-3 text-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
               <div className="rounded-xl border border-white/10 bg-white/5 p-4">
                 <div className="font-medium">Safe</div>
                 <div className="mt-1 text-white/60">
@@ -427,7 +427,7 @@ function Backup() {
           <CardDescription>Örn: D (C olamaz). UI stdin veremediği için hedef gerekli.</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
             <input
               value={target}
               onChange={(e) => {
@@ -521,7 +521,7 @@ function Logs() {
           </CardContent>
         </Card>
       ) : (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Card className="col-span-1">
             <CardHeader>
               <CardTitle>Dosyalar</CardTitle>
@@ -551,8 +551,8 @@ function Logs() {
             </CardContent>
           </Card>
 
-          <Card className="col-span-2 overflow-hidden">
-        <CardHeader className="flex flex-row items-start justify-between">
+          <Card className="col-span-1 md:col-span-2 overflow-hidden">
+        <CardHeader className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
           <div className="space-y-1">
             <CardTitle>İçerik</CardTitle>
             <CardDescription>{selected || '—'}</CardDescription>
@@ -580,7 +580,7 @@ function Settings() {
   return (
     <>
       <PageHeader title="Ayarlar" subtitle="config.ini ve log klasörü ayarları." />
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card>
           <CardHeader>
             <CardTitle>Gelişmiş</CardTitle>
