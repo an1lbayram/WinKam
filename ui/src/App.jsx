@@ -60,6 +60,17 @@ function Shell({ children }) {
               <div>
                 <div className="text-sm font-semibold leading-tight">WinKam</div>
                 <div className="text-xs text-white/50">Profesyonel Temizlik Paneli</div>
+                <div className="mt-1.5 flex items-center gap-1 text-[11px] text-white/40">
+                  Created by
+                  <a
+                    href="https://an1lbayram.github.io/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 rounded bg-violet-500/10 px-1.5 py-0.5 font-medium text-violet-300 transition-all hover:scale-105 hover:bg-violet-500/20 hover:text-violet-200 active:scale-95"
+                  >
+                    <span className="font-mono text-[10px]">&lt;/&gt;</span> an1lbayram
+                  </a>
+                </div>
               </div>
             </div>
 
