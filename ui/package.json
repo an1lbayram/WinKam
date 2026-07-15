@@ -58,7 +58,7 @@
     "lucide-react": "^1.8.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router-dom": "^7.14.0",
+    "react-router-dom": "^7.18.1",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
@@ -79,7 +79,7 @@
     "extract-zip": "^2.0.1",
     "globals": "^17.4.0",
     "png-to-ico": "^3.0.1",
-    "postcss": "^8.5.9",
+    "postcss": "^8.5.19",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.2.2",
     "vite": "^8.0.4",
