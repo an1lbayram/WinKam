@@ -199,10 +199,42 @@
   background: rgba(139, 92, 246, 0.5);
 }
 
+@media (max-width: 768px) {
+  nav {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  nav a {
+    min-height: 44px;
+    white-space: nowrap !important;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.85rem !important;
+    flex-shrink: 0;
+  }
+
+  pre {
+    word-break: break-all !important;
+    white-space: pre-wrap !important;
+  }
+}
+
 @media (max-width: 640px) {
   nav a {
     min-height: 44px;
     align-items: center;
   }
+
+  button {
+    min-height: 44px;
+  }
 }
+
 
