@@ -182,3 +182,27 @@
     border-right-color: var(--border);
   }
 }
+
+/* Custom Scrollbar & Responsive Touch Targets */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0d12;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.5);
+}
+
+@media (max-width: 640px) {
+  nav a {
+    min-height: 44px;
+    align-items: center;
+  }
+}
+
