@@ -63,7 +63,7 @@ function Shell({ children }) {
                 <div className="mt-1.5 flex items-center gap-1 text-[11px] text-white/40">
                   Created by
                   <a
-                    href="https://an1lbayram.github.io/"
+                    href="https://an1lbayram-github-io.vercel.app/"
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-1 rounded bg-violet-500/10 px-1.5 py-0.5 font-medium text-violet-300 transition-all hover:scale-105 hover:bg-violet-500/20 hover:text-violet-200 active:scale-95"
