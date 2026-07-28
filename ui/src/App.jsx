@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import { NavLink, Route, Routes } from 'react-router-dom'
 import {
   Activity,
@@ -639,6 +640,7 @@ export default function App() {
         <Route path="/loglar" element={<Logs />} />
         <Route path="/ayarlar" element={<Settings />} />
       </Routes>
+      <Analytics />
     </Shell>
   )
 }
