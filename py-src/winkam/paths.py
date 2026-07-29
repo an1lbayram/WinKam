@@ -9,14 +9,6 @@ def project_root() -> Path:
     return Path(__file__).resolve().parents[2]
 
 
-def src_dir() -> Path:
-    return project_root() / "src"
-
-
-def core_dir() -> Path:
-    return src_dir() / "core"
-
-
 def config_path() -> Path:
     return project_root() / "config" / "config.ini"
 

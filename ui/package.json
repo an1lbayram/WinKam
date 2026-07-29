@@ -11,6 +11,8 @@
     "electron:dev": "python -m pip install -e .. && concurrently -k -n VITE,ELECTRON -c cyan,magenta \"vite --port 5173 --host 127.0.0.1\" \"wait-on http://127.0.0.1:5173 && cross-env VITE_DEV_SERVER_URL=http://127.0.0.1:5173 PYTHONIOENCODING=utf-8 electron .\"",
     "build": "vite build",
     "electron:build": "vite build",
+    "sync-vendor": "node scripts/sync-vendor.mjs",
+    "predist:win": "npm run sync-vendor",
     "dist:win": "node scripts/generate-icon.mjs && npm run build && electron-builder --win --x64",
     "lint": "eslint .",
     "preview": "vite preview"

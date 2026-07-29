@@ -66,7 +66,8 @@ exports.default = async function beforePack(context) {
   const pythonDir = path.join(vendorDir, 'python')
   const cacheZip = path.join(vendorDir, 'cache', 'python-embed.zip')
 
-  // If already prepared, do nothing.
+  // Download + extract the embeddable Python runtime only once (expensive,
+  // and the runtime itself never changes between builds).
   if (!(await exists(path.join(pythonDir, 'python.exe')))) {
     const ver = process.env.WINKAM_EMBED_PYTHON_VERSION || '3.13.13'
     const url = `https://www.python.org/ftp/python/${ver}/python-${ver}-embed-amd64.zip`
@@ -79,15 +80,18 @@ exports.default = async function beforePack(context) {
     await fs.mkdir(pythonDir, { recursive: true })
     await extract(cacheZip, { dir: pythonDir })
 
-    // Copy winkam package inside python directory (so '.' in _pth works)
-    const winkamSrc = path.join(repoRoot, 'py-src', 'winkam')
-    const winkamDst = path.join(pythonDir, 'winkam')
-    await copyDir(winkamSrc, winkamDst)
-
     await patchPth(pythonDir)
   }
 
+  // Always resync the winkam package from source (repo root py-src/winkam),
+  // so the packaged app never drifts from the CLI source of truth even if
+  // the embeddable Python runtime was already prepared in a previous run.
+  const winkamSrc = path.join(repoRoot, 'py-src', 'winkam')
+  const winkamDst = path.join(pythonDir, 'winkam')
+  await fs.rm(path.join(winkamDst, '__pycache__'), { recursive: true, force: true })
+  await copyDir(winkamSrc, winkamDst)
+
   // eslint-disable-next-line no-console
-  console.log('[beforePack] Bundled Python OK.')
+  console.log('[beforePack] Bundled Python OK (winkam package resynced from py-src).')
 }
 
