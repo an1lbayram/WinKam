@@ -5,6 +5,8 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.coverage
+htmlcov/
 build/
 dist/
 ui/node_modules/
@@ -12,6 +14,12 @@ ui/dist/
 ui/vendor/
 ui/release/
 ui/build/icon.png
+
+# UI test artifacts
+ui/coverage/
+ui/playwright-report/
+ui/test-results/
+ui/blob-report/
 
 # Virtual envs
 .venv/
