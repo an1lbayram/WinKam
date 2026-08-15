@@ -44,10 +44,10 @@ def normalize_drive_input(s: str) -> str | None:
     s = (s or "").strip().replace(" ", "")
     if not s:
         return None
-    letter = s[0:1]
-    if not re.fullmatch(r"[A-Za-z]", letter):
+    match = re.fullmatch(r"([A-Za-z]):?\\?", s)
+    if not match:
         return None
-    return f"{letter.upper()}:"
+    return f"{match.group(1).upper()}:"
 
 
 def backup(target: str | None, logger: Logger) -> None:

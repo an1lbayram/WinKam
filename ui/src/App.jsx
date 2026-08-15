@@ -1,5 +1,6 @@
 import { Analytics } from '@vercel/analytics/react'
 import { NavLink, Route, Routes } from 'react-router-dom'
+import './App.css'
 import {
   Activity,
   Check,
@@ -60,8 +61,8 @@ function Shell({ children }) {
               </div>
               <div>
                 <div className="text-sm font-semibold leading-tight">WinKam</div>
-                <div className="text-xs text-white/50">Profesyonel Temizlik Paneli</div>
-                <div className="mt-1.5 flex items-center gap-1 text-[11px] text-white/40">
+                <div className="text-xs text-white/60">Profesyonel Temizlik Paneli</div>
+                <div className="mt-1.5 flex items-center gap-1 text-[11px] text-white/60">
                   Created by
                   <a
                     href="https://an1lbayram-github-io.vercel.app/"
@@ -100,18 +101,18 @@ function Shell({ children }) {
             <div className="mt-5 rounded-xl border border-white/10 bg-white/5 p-3">
               <div className="text-xs text-white/60">Durum</div>
               <div className="mt-1 text-sm font-medium">Hazır</div>
-              <div className="mt-2 text-xs text-white/50">
+              <div className="mt-2 text-xs text-white/60">
                 {electronOk
                   ? 'Electron: bağlı • Dry-run: adminsiz • Safe/Advanced: yönetici'
                   : 'Web mod: simülasyon • Gerçek çalıştırma için Electron'}
               </div>
-              <div className="mt-2 text-[11px] text-white/40">
+              <div className="mt-2 text-[11px] text-white/60">
                 UA: {diag.uaElectron ? 'Electron' : 'Web'} • Bridge:{' '}
                 {diag.bridge ? 'OK' : 'YOK'} • Ping:{' '}
                 {diag.ping?.ok ? 'OK' : '—'}
               </div>
               {diag.ping?.ok ? (
-                <div className="mt-1 text-[11px] text-white/40">
+                <div className="mt-1 text-[11px] text-white/60">
                   Yetki: {diag.ping?.elevated ? 'Yönetici' : 'Standart'}
                 </div>
               ) : null}
@@ -129,8 +130,8 @@ function PageHeader({ title, subtitle, actions }) {
   return (
     <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
       <div className="min-w-0">
-        <div className="text-xl font-semibold leading-tight">{title}</div>
-        {subtitle ? <div className="mt-1 text-sm text-white/60">{subtitle}</div> : null}
+        <h1 className="text-xl font-semibold leading-tight">{title}</h1>
+        {subtitle ? <p className="mt-1 text-sm text-white/60">{subtitle}</p> : null}
       </div>
       <div className="flex shrink-0 flex-wrap items-center gap-2">{actions}</div>
     </div>
@@ -450,7 +451,7 @@ function Backup() {
               className="h-10 w-32 rounded-lg border border-white/10 bg-black/20 px-3 text-sm text-white outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
               placeholder="D"
             />
-            <div className="text-xs text-white/50">
+            <div className="text-xs text-white/60">
               Yönetici olarak çalıştırmanız gerekebilir.
             </div>
           </div>
@@ -551,13 +552,13 @@ function Logs() {
                     onClick={() => open(f.name)}
                   >
                     <div className="font-medium">{f.name}</div>
-                    <div className="mt-1 text-[11px] text-white/50">
+                    <div className="mt-1 text-[11px] text-white/60">
                       {Math.round((f.size || 0) / 1024)} KB
                     </div>
                   </button>
                 ))}
                 {files.length === 0 ? (
-                  <div className="text-xs text-white/50">Log bulunamadı.</div>
+                  <div className="text-xs text-white/60">Log bulunamadı.</div>
                 ) : null}
               </div>
             </CardContent>
@@ -602,7 +603,7 @@ function Settings() {
             <div className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 p-3">
               <div>
                 <div className="text-sm font-medium">Güvenli Kip (Safe Mode) Koruması</div>
-                <div className="text-xs text-white/50">Kritik sistem dosyalarını her zaman atla</div>
+                <div className="text-xs text-white/60">Kritik sistem dosyalarını her zaman atla</div>
               </div>
               <div className="h-4 w-4 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]"></div>
             </div>
@@ -617,7 +618,7 @@ function Settings() {
             <div className="space-y-2 text-sm text-white/70">
               <p><strong>WinKam</strong>, açık kaynaklı bir Windows temizlik ve optimizasyon aracıdır.</p>
               <p>Güvenli ve şeffaf yapısıyla gereksiz sistem yüklerini ortadan kaldırır.</p>
-              <div className="mt-4 flex items-center gap-2 text-xs text-white/50">
+              <div className="mt-4 flex items-center gap-2 text-xs text-white/60">
                 <Shield className="h-4 w-4" /> Güvenli Kök Koruması Aktif (MIT Lisansı)
               </div>
             </div>
