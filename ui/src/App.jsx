@@ -21,7 +21,14 @@ import { cn } from './lib/cn'
 
 function Shell({ children }) {
   const electronOk = isElectronAvailable()
-  const [diag, setDiag] = useState({ uaElectron: false, bridge: false, ping: null })
+  // uaElectron/bridge are readable synchronously on first render, so they are
+  // computed in the initial state instead of being written back from an
+  // effect — that write was a cascading render (react-hooks/set-state-in-effect).
+  const [diag, setDiag] = useState(() => ({
+    uaElectron: typeof navigator !== 'undefined' && /Electron/i.test(navigator.userAgent || ''),
+    bridge: isElectronAvailable(),
+    ping: null,
+  }))
   const nav = useMemo(
     () => [
       { to: '/', label: 'Genel Bakış', icon: Activity },
@@ -35,14 +42,20 @@ function Shell({ children }) {
     [],
   )
 
+  // The ping is genuinely async (it round-trips through the Electron bridge),
+  // so it stays in an effect and only ever setState()s from a callback.
   useEffect(() => {
-    const uaElectron =
-      typeof navigator !== 'undefined' && /Electron/i.test(navigator.userAgent || '')
-    const bridge = isElectronAvailable()
-    setDiag((d) => ({ ...d, uaElectron, bridge }))
+    let cancelled = false
     electronPing()
-      .then((res) => setDiag((d) => ({ ...d, ping: res })))
-      .catch(() => setDiag((d) => ({ ...d, ping: { ok: false, elevated: false } })))
+      .then((res) => {
+        if (!cancelled) setDiag((d) => ({ ...d, ping: res }))
+      })
+      .catch(() => {
+        if (!cancelled) setDiag((d) => ({ ...d, ping: { ok: false, elevated: false } }))
+      })
+    return () => {
+      cancelled = true
+    }
   }, [])
 
   return (

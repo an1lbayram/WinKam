@@ -25,15 +25,15 @@ function createWindow() {
 
   // Diagnostics: surface renderer problems in terminal.
   win.webContents.on('console-message', (_e, level, message, line, sourceId) => {
-    // eslint-disable-next-line no-console
+     
     console.log(`[renderer:${level}] ${message} (${sourceId}:${line})`)
   })
   win.webContents.on('render-process-gone', (_e, details) => {
-    // eslint-disable-next-line no-console
+     
     console.log('[renderer] gone:', details)
   })
   win.webContents.on('did-fail-load', (_e, errorCode, errorDescription, validatedURL) => {
-    // eslint-disable-next-line no-console
+     
     console.log('[did-fail-load]', { errorCode, errorDescription, validatedURL })
   })
 

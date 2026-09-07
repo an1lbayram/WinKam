@@ -71,7 +71,7 @@ exports.default = async function beforePack(context) {
   if (!(await exists(path.join(pythonDir, 'python.exe')))) {
     const ver = process.env.WINKAM_EMBED_PYTHON_VERSION || '3.13.13'
     const url = `https://www.python.org/ftp/python/${ver}/python-${ver}-embed-amd64.zip`
-    // eslint-disable-next-line no-console
+     
     console.log(`[beforePack] Downloading embeddable Python ${ver}...`)
     await download(url, cacheZip)
 
@@ -91,7 +91,7 @@ exports.default = async function beforePack(context) {
   await fs.rm(path.join(winkamDst, '__pycache__'), { recursive: true, force: true })
   await copyDir(winkamSrc, winkamDst)
 
-  // eslint-disable-next-line no-console
+   
   console.log('[beforePack] Bundled Python OK (winkam package resynced from py-src).')
 }
 
