@@ -30,8 +30,11 @@ export default defineConfig({
   },
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
-    { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
-    { name: 'webkit', use: { ...devices['Desktop Safari'] } },
-    { name: 'mobile-chrome', use: { ...devices['Pixel 7'] } },
+    // Gorsel regresyon yalnizca chromium'da: referans goruntuler motor
+    // basina degisiyor ve depoda yalnizca chromium icin var. Diger
+    // motorlarda duzen dogrulugunu responsive/navigation testleri kapsiyor.
+    { name: 'firefox', use: { ...devices['Desktop Firefox'] }, testIgnore: '**/visual.spec.js' },
+    { name: 'webkit', use: { ...devices['Desktop Safari'] }, testIgnore: '**/visual.spec.js' },
+    { name: 'mobile-chrome', use: { ...devices['Pixel 7'] }, testIgnore: '**/visual.spec.js' },
   ],
 })

@@ -1,0 +1,22 @@
+fix(ci): gorsel regresyonu chromium ile sinirla, WebKit 403 gurultusunu ele
+
+E2E job'inda kalan iki hata:
+
+- firefox, visual.spec.js icin "A snapshot doesn't exist" veriyordu.
+  Referans goruntuler motor basina isimlendiriliyor ve depoda yalnizca
+  chromium icin var; her motor icin ayri baseline tutmanin faydasi yok.
+  visual.spec.js artik yalnizca chromium projesinde calisiyor, duzen
+  dogrulugu diger motorlarda responsive/navigation testleriyle kapsaniyor.
+
+- webkit, "no console errors" testinde patliyordu: Vite'in dev sunucusu
+  WebKit'in bazi on-yukleme isteklerine 403 donuyor. Bu uygulamanin degil
+  test sunucusunun gurultusu ve yalnizca tek motorda goruluyor. Yalnizca
+  403 kaynak hatalari elenip 404'ler ve gercek JS hatalari yakalanmaya
+  devam ediyor.
+
+Ayrica npm audit adimi Kapatika'daki ile ayni sekilde bloklamayacak hale
+getirildi: continue-on-error tek basina kosuyu kirmizi gostermeye devam
+ediyordu.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_016WL1tyN9SEG8GoFgcPcPDV
